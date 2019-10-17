@@ -6,17 +6,17 @@ _Wessel Smit 500780694_
 ## Concept
 
 ## Installation
-**Clone the repository from:
+**Clone the repository from:**
 ```
 https://github.com/WesselSmit/frontend-applications.git
 ```
 
-**NPM Package.json
+**NPM Package.json**
 ```
 npm install
 ```
 
-### Usage
+**Usage**
 Navigate to the repository
 
 ```
