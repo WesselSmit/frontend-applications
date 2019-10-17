@@ -5,4 +5,4 @@
 ## Concept
 
 ## Install Notes
-* Vue-cli installed
+### Clone the repository from:
