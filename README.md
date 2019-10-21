@@ -6,7 +6,7 @@ _Wessel Smit 500780694_
 ## Concept
 
 ## Installation & Usage
-**Github**
+### Github
 
 Clone the following github repository:
 ```
@@ -14,8 +14,7 @@ https://github.com/WesselSmit/frontend-applications.git
 ```
 
 
-
-**Terminal**
+### Terminal
 
 Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
 Create a package.json:
@@ -24,8 +23,7 @@ npm install
 ```
 
 
-
-**Usage**
+### Usage
 
 Start the server (in the terminal)
 ```
