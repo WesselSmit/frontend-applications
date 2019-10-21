@@ -5,16 +5,12 @@ _Wessel Smit 500780694_
 
 ## Concept
 
-## Installation & Usage
-### Github
+## Installation
 
-Clone the following github repository:
+Clone the github repository
 ```
-https://github.com/WesselSmit/frontend-applications.git
+git clone https://github.com/WesselSmit/frontend-applications.git
 ```
-
-
-### Terminal
 
 Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
 
@@ -24,7 +20,8 @@ npm install
 ```
 
 
-### Usage
+## Usage
+Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
 
 Start the server (in the terminal)
 ```
