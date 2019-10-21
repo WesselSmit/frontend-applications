@@ -12,6 +12,7 @@ Clone the github repository
 git clone https://github.com/WesselSmit/frontend-applications.git
 ```
 
+
 Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
 
 Create a package.json:
@@ -23,10 +24,13 @@ npm install
 ## Usage
 Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
 
+
 Start the server (in the terminal)
 ```
 npm run serve
 ```
+
+
 
 You can now find the application with the following URL:
 ```
