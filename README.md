@@ -14,6 +14,7 @@ https://github.com/WesselSmit/frontend-applications.git
 ```
 
 
+
 **Terminal**
 
 Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
@@ -21,6 +22,7 @@ Create a package.json:
 ```
 npm install
 ```
+
 
 
 **Usage**
