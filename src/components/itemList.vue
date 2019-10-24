@@ -12,7 +12,7 @@
 // PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 // PREFIX edm: <http://www.europeana.eu/schemas/edm/>
 // PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-// prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+// PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 // SELECT ?cho ?img ?title ?cat WHERE {
 //   #Categorie
@@ -48,9 +48,11 @@ export default {
   name: "itemList",
   components: {},
   data() {
-    return {};
+    return {
+      items: []
+    };
   },
-  mounted() {}
+  created() {}
 };
 </script>
 
