@@ -18,6 +18,11 @@ Create a package.json:
 npm install
 ```
 
+Install Axios
+```
+npm install axios
+```
+
 
 ## Usage
 Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
