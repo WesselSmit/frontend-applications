@@ -1,12 +1,6 @@
 <template>
   <div id="app">
-    <ul>
-      <li
-        v-for="(item, index) in items"
-        v-bind:key="item.id"
-        v-bind:id="'item' + index"
-      >{{ index }} - {{ item.title.value }}</li>
-    </ul>
+    <itemList v-bind:items="items" />
   </div>
 </template>
 
@@ -47,12 +41,23 @@ export default {
             ?cho dc:title ?title .
 
           FILTER langMatches(lang(?title), "eng")
-        } LIMIT 100
+        } LIMIT 10
       `;
     axios
       .get(url + "?query=" + encodeURIComponent(query) + "&format=json")
       .then(res => (this.items = res.data.results.bindings))
       .then(res => console.log(res))
+      .then(res => {
+        //Unavailable images have '-Extra' in their URL, so we renavigate the src to the unavailable image
+        this.items.forEach(function(item) {
+          item.img.value = item.img.value.replace("http", "https");
+          if (item.img.value.includes("-Extra")) {
+            //console.log("pre " + item.img.value);
+            item.img.value = item.img.value.replace("-Extra", "");
+            //console.log("post " + item.img.value);
+          }
+        });
+      })
       .catch(err => console.log(err));
   }
 };
