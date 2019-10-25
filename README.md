@@ -1,9 +1,8 @@
 # Frontend-Applications
 _Wessel Smit 500780694_ 
  
-## Preview
-
 ## Concept
+![Concept](Screenshot 2019-10-25 at 23.05.05.png)
 
 ## Installation
 **Clone the github repository**
