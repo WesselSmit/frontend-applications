@@ -2,7 +2,7 @@
 _Wessel Smit 500780694_ 
  
 ## Concept
-![Concept](Screenshot 2019-10-25 at 23.05.05.png)
+<img src="Screenshot 2019-10-25 at 23.05.05.png" alt="Concept Sketch">
 
 ## Installation
 **Clone the github repository**
