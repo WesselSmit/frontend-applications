@@ -1,9 +1,8 @@
 # Frontend-Applications
 _Wessel Smit 500780694_ 
  
-## Preview
-
 ## Concept
+<img alt="Concept Sketch" src="./././././screenshots/Screenshot 2019-10-25 at 23.05.05.png" title="Concept Sketch">
 
 ## Installation
 **Clone the github repository**
