@@ -4,6 +4,20 @@ _Wessel Smit 500780694_
 ## Concept
 <img width="100%" alt="Concept Sketch" src="https://user-images.githubusercontent.com/45405413/67605103-af910400-f77d-11e9-8098-feeab14efc89.png">
 
+The goal of my ‘history comparison’ application is to offer users unique insights through a side-by-side timeline view within a specified category. After choosing a category, the user has to specify two of each variable:
+* Place (continent, country, region, city etc.)
+* Timeframe (years - years)
+
+This will customize the SPARQL queries, the results will be bundled together in an object for both ‘comparison objects’.
+
+Both ‘comparison objects’ will be served in the same view, separated by a timeline. For Each ‘comparison object’ an object list will be dynamically created, which contains some general information. (Image, Title, Time, Description)
+
+When the user clicks an object; the (parent) comparison object wil serve a view of this particular object, which contains the details. (Image, Title, Time, Description, origin [specific], culture, size, materials etc.)
+
+For the user this application could be a good comparison tool between multiple cultures in different times/regions of the world. (Eg. The Mayans and Old Egypt while many years and miles apart had very similar cultures! With this application users can compare weapons, household-items, clothes etc.)
+
+For the client (NMVW) this application can be used as an interest-indicator of specific items; all clicks & views will be tracked. This information will be accessible for there client in a dashboard. This can give the client useful insights of which items people deem interesting, and might lead to ideas for new exhibitions! (The data is especially valuable for the client because it requires the user to specify what content they want to see/compare; by removing good-default/standard items you won’t have to deal with the ‘good defaults false information’ problem where users only view the information found on the first page)
+
 ## Installation
 **Clone the github repository**
 ```
