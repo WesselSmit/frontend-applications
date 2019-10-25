@@ -14,7 +14,7 @@ Both ‘comparison objects’ will be served in the same view, separated by a ti
 
 When the user clicks an object; the (parent) comparison object wil serve a view of this particular object, which contains the details. (Image, Title, Time, Description, origin [specific], culture, size, materials etc.)
 
-For the user this application could be a good comparison tool between multiple cultures in different times/regions of the world. (Eg. The Mayans and Old Egypt while many years and miles apart had very similar cultures! With this application users can compare weapons, household-items, clothes etc.)
+For the user this application could be a good comparison tool between multiple cultures in different times/regions of the world. (Eg. The Mayans and Old Egypt while many years and miles apart had very similar cultures! With this application users can compare weapons, household-items, clothes etc. from both empires with each other)
 
 For the client (NMVW) this application can be used as an interest-indicator of specific items; all clicks & views will be tracked. This information will be accessible for there client in a dashboard. This can give the client useful insights of which items people deem interesting, and might lead to ideas for new exhibitions! (The data is especially valuable for the client because it requires the user to specify what content they want to see/compare; by removing good-default/standard items you won’t have to deal with the ‘good defaults false information’ problem where users only view the information found on the first page)
 
