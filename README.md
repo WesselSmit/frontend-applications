@@ -2,7 +2,7 @@
 _Wessel Smit 500780694_ 
  
 ## Concept
-<img alt="Concept Sketch" src="./././././screenshots/Screenshot 2019-10-25 at 23.05.05.png" title="Concept Sketch">
+<img width="302" alt="Concept Sketch" src="https://user-images.githubusercontent.com/45405413/67605103-af910400-f77d-11e9-8098-feeab14efc89.png">
 
 ## Installation
 **Clone the github repository**
