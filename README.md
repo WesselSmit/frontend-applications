@@ -8,7 +8,7 @@ The goal of my ‘**history comparison**’ application is to offer users **uniq
 * Place (continent, country, region, city etc.)
 * Timeframe (years - years)
 
-This will customize the SPARQL queries, the results will be bundled together in two 'comparison objects'; one for each ‘comparison object’.
+This will customize the SPARQL queries, the results will be bundled together in two seperate objects; one for each ‘comparison object’.
 
 Both ‘**comparison objects**’ will be served in the same view, separated by a timeline. For Each ‘comparison object’ an object list will be dynamically created, which contains some **general information**. _(Image, Title, Time, Description)_
 
