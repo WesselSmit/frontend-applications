@@ -1,10 +1,10 @@
 <template>
-  <ul>
-    <li v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
-      {{ index }} - {{ item.title.value }}
+  <div>
+    <article v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
+      <h2>{{ index }} - {{ item.title.value }}</h2>
       <img v-bind:src="item.img.value" />
-    </li>
-  </ul>
+    </article>
+  </div>
 </template>
 
 <script>
@@ -61,13 +61,31 @@ export default {
 </script>
 
 <style scoped>
+article {
+  background-color: white;
+  border: 1px solid white;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+article:last-of-type {
+  margin-bottom: 0px;
+}
+/* TODO: de articles zijn niet hetzelfde gepositioneerd aan beide kanten van de timeline */
+.left > div > article {
+  border-radius: 5px 0px 5px 5px;
+  margin: 0px 10px 20px 0px;
+}
+
+.right > div > article {
+  border-radius: 0px 5px 5px 5px;
+  margin: 0px 0px 20px 30px;
+}
+
 img {
   height: 100px;
   width: auto;
   display: block;
-}
-
-li {
-  list-style: none;
 }
 </style>

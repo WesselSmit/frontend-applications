@@ -1,9 +1,14 @@
 <template>
   <main>
-    <section>
+    <div>
+      <h2>North-America</h2>
+      <h1>NMVW Comparison</h1>
+      <h2>South-America</h2>
+    </div>
+    <section class="left">
       <itemList />
     </section>
-    <section>
+    <section class="right">
       <itemList />
     </section>
   </main>
@@ -25,19 +30,34 @@ main {
   height: 100vh;
 }
 
-section {
+main > div:first-of-type {
+  width: 100vw;
+  height: 6vh;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main > div:first-of-type > * {
+  align-self: flex-end;
+}
+
+main > section {
   width: 50vw;
-  height: 100%;
+  height: 94vh;
   display: inline-block;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 20px;
 }
 
-section:first-of-type {
-  background-color: blue;
+section.left {
+  background-color: lightslategray;
+  border-right: 5px solid black;
 }
 
-section:last-of-type {
-  background-color: red;
+section.right {
+  background-color: grey;
+  border-left: 5px solid black;
 }
 </style>

@@ -17,12 +17,13 @@ export default {
 
 <style>
 * {
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
 }
 
-body {
-  font-family: helvetica, arial, sans-serif;
+body,
+h1,
+h2 {
+  margin: 0px;
+  padding: 0px;
 }
 </style>
