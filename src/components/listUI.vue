@@ -6,21 +6,23 @@
       <h2>South-America</h2>
     </div>
     <section class="left">
-      <itemList />
+      <itemListL />
     </section>
     <section class="right">
-      <itemList />
+      <itemListR />
     </section>
   </main>
 </template>
 
 <script>
-import itemList from "./itemList.vue";
+import itemListL from "./itemListL.vue";
+import itemListR from "./itemListR.vue";
 
 export default {
   name: "listUI",
   components: {
-    itemList
+    itemListL,
+    itemListR
   }
 };
 </script>
@@ -32,32 +34,42 @@ main {
 
 main > div:first-of-type {
   width: 100vw;
-  height: 6vh;
-  padding: 10px 30px;
+  height: 4.5vh;
+  padding: 10px 30px 8px 30px;
   display: flex;
   justify-content: space-between;
+  background-color: #272c35;
+  color: #d6d7d9;
 }
 
 main > div:first-of-type > * {
   align-self: flex-end;
 }
 
+main > div:first-of-type h1 {
+  font-size: 20px;
+}
+
+main > div:first-of-type h2 {
+  font-size: 16px;
+}
+
 main > section {
   width: 50vw;
-  height: 94vh;
+  height: 95.5vh;
   display: inline-block;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 20px;
+  background-color: #323843;
+  border-top: 2px solid #191c22;
 }
 
 section.left {
-  background-color: lightslategray;
-  border-right: 5px solid black;
+  border-right: 1px solid #191c22;
 }
 
 section.right {
-  background-color: grey;
-  border-left: 5px solid black;
+  border-left: 1px solid #191c22;
 }
 </style>
