@@ -18,6 +18,18 @@ For the **user** this application could be a good **comparison tool** between mu
 
 For the **client (NMVW)** this application can be used as an **interest-indicator** of specific items; all **clicks & views will be tracked**. This information will be accessible for the client in a dashboard. This can give the client useful insights of which items people think are interesting, and might lead to ideas for new exhibitions! The data is especially valuable for the client because it requires the user to specify what content they want to see/compare before it shows any items; by removing good-default/standard items you won’t have to deal with the ‘good defaults false information’ problem where users only view the information found on the first page and thus removes a bias from the data.
 
+## Data
+**API**
+This application uses the **NMVW database**, which is accessed with **fetch()** calls at the following endpoint:
+```
+https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-23/sparql
+```
+ 
+**SPARQL** 
+SPARQL is used to query, I use the following SPARQL query:
+```
+```
+
 ## Installation
 **Clone the github repository**
 ```
