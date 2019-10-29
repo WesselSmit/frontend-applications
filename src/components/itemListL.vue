@@ -1,7 +1,7 @@
 <template>
   <div>
     <article v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
-      <h2>{{ index }} - {{ item.title.value }}</h2>
+      <h2>{{ item.title.value }}</h2>
       <img v-bind:src="item.img.value" />
     </article>
   </div>
@@ -61,31 +61,42 @@ export default {
 </script>
 
 <style scoped>
+div:first-of-type {
+  display: flex;
+  flex-direction: column;
+}
+
 article {
-  background-color: white;
+  background-color: #d6d7d9;
   border: 1px solid white;
   margin-bottom: 20px;
   padding: 10px;
-  width: calc(100% - 20px);
+  width: auto;
+  display: inline-block;
+  cursor: pointer;
 }
 
 article:last-of-type {
   margin-bottom: 0px;
 }
-/* TODO: de articles zijn niet hetzelfde gepositioneerd aan beide kanten van de timeline */
+
 .left > div > article {
   border-radius: 5px 0px 5px 5px;
-  /* margin: 0px 10px 20px 0px; */
+  align-self: flex-end;
 }
 
 .right > div > article {
   border-radius: 0px 5px 5px 5px;
-  margin: 0px 0px 20px 30px;
+  align-self: flex-start;
 }
 
-img {
-  height: 100px;
+article > h2 {
+  font-size: 20px;
+}
+
+article > img {
+  max-height: 200px;
   width: auto;
-  display: block;
+  max-width: 100%;
 }
 </style>

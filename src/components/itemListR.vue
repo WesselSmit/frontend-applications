@@ -1,7 +1,7 @@
 <template>
   <div>
     <article v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
-      <h2>{{ index }} - {{ item.title.value }}</h2>
+      <h2>{{ item.title.value }}</h2>
       <img v-bind:src="item.img.value" />
     </article>
   </div>
