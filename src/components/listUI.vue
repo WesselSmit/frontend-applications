@@ -9,7 +9,7 @@
       <itemListL />
     </section>
     <section class="right">
-      <itemListR />
+      <!-- <itemListR /> -->
     </section>
   </main>
 </template>

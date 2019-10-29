@@ -1,42 +1,21 @@
 <template>
   <div>
-    <!-- <article v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
+    <article v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
+      <h2>{{ index }} - {{ item.title.value }}</h2>
       <img v-bind:src="item.img.value" />
-      <h2>{{ item.title.value }}</h2>
-    </article>-->
-    <div
-      v-for="(item, index) in items"
-      v-bind:key="item.id"
-      v-bind:id="'item' + index"
-      @click="details"
-    >
-      <item v-bind:item="item" />
-    </div>
+    </article>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import item from "./item.vue";
 
 export default {
-  name: "itemListL",
-  components: {
-    item
-  },
-  props: {
-    items: null
-  },
+  name: "itemList",
   data() {
     return {
       items: []
     };
-  },
-  methods: {
-    details: function() {
-      console.log(this);
-      console.log(document.activeElement);
-    }
   },
   created() {
     const url =
@@ -82,41 +61,31 @@ export default {
 </script>
 
 <style scoped>
-div:first-of-type {
-  display: flex;
-  flex-direction: column;
-}
-
-/* article {
-  background-color: #d6d7d9;
+article {
+  background-color: white;
   border: 1px solid white;
   margin-bottom: 20px;
   padding: 10px;
-  width: auto;
-  display: inline-block;
-  cursor: pointer;
+  width: calc(100% - 20px);
 }
 
 article:last-of-type {
   margin-bottom: 0px;
 }
+/* TODO: de articles zijn niet hetzelfde gepositioneerd aan beide kanten van de timeline */
 .left > div > article {
   border-radius: 5px 0px 5px 5px;
-  align-self: flex-end;
+  /* margin: 0px 10px 20px 0px; */
 }
 
 .right > div > article {
   border-radius: 0px 5px 5px 5px;
-  align-self: flex-start;
+  margin: 0px 0px 20px 30px;
 }
 
-article > h2 {
-  font-size: 20px;
-}
-
-article > img {
-  max-height: 200px;
+img {
+  height: 100px;
   width: auto;
-  max-width: 100%;
-} */
+  display: block;
+}
 </style>
