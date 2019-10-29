@@ -1,6 +1,9 @@
 # Frontend-Applications
 _Wessel Smit 500780694_ 
  
+## Description
+In this course I created an frontend-application using **NodeJS** & **VueJS**. The goal was to create an application for the NMVW institute and it's users, it has to be beneficial for both parties. Along the way I will be learning about **NodeJS**, **npm**, **frameworks**, **API**, reading **documentations** & **Javascript** in general.
+ 
 ## Concept
 <img width="100%" alt="Concept Sketch" src="https://user-images.githubusercontent.com/45405413/67605103-af910400-f77d-11e9-8098-feeab14efc89.png">
 
