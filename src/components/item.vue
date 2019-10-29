@@ -16,8 +16,8 @@ export default {
 
 <style scoped>
 article {
-  background-color: white;
-  border: 1px solid white;
+  background-color: #474c56;
+  border: 1px solid #474c56;
   margin-bottom: 20px;
   padding: 10px;
   width: auto;
@@ -36,6 +36,8 @@ article {
 article > h2 {
   font-size: 20px;
   text-align: center;
+  color: #d6d7d9;
+  font-weight: 400;
 }
 
 article > img {
