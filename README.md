@@ -20,12 +20,14 @@ For the **client (NMVW)** this application can be used as an **interest-indicato
 
 ## Data
 **API**
+
 This application uses the **NMVW database**, which is accessed with **fetch()** calls at the following endpoint:
 ```
 https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-23/sparql
 ```
  
 **SPARQL** 
+
 SPARQL is used to query, I use the following SPARQL query:
 ```
 ```
