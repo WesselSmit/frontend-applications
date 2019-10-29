@@ -1,17 +1,23 @@
 <template>
   <div>
-    <article v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
-      <h2>{{ item.title.value }}</h2>
-      <img v-bind:src="item.img.value" />
-    </article>
+    <div v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
+      <item v-bind:item="item" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import item from "./item.vue";
 
 export default {
   name: "itemList",
+  components: {
+    item
+  },
+  props: {
+    item: null
+  },
   data() {
     return {
       items: []
@@ -40,7 +46,7 @@ export default {
             ?cho dc:title ?title .
 
           FILTER langMatches(lang(?title), "eng")
-        } LIMIT 3
+        } LIMIT 2
       `;
     axios
       .get(url + "?query=" + encodeURIComponent(query) + "&format=json")
@@ -66,37 +72,7 @@ div:first-of-type {
   flex-direction: column;
 }
 
-article {
-  background-color: #d6d7d9;
-  border: 1px solid white;
-  margin-bottom: 20px;
-  padding: 10px;
-  width: auto;
-  display: inline-block;
-  cursor: pointer;
-}
-
-article:last-of-type {
-  margin-bottom: 0px;
-}
-
-.left > div > article {
-  border-radius: 5px 0px 5px 5px;
+.left > div > div {
   align-self: flex-end;
-}
-
-.right > div > article {
-  border-radius: 0px 5px 5px 5px;
-  align-self: flex-start;
-}
-
-article > h2 {
-  font-size: 20px;
-}
-
-article > img {
-  max-height: 200px;
-  width: auto;
-  max-width: 100%;
 }
 </style>

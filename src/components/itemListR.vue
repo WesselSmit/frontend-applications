@@ -1,17 +1,23 @@
 <template>
   <div>
-    <article v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
-      <h2>{{ item.title.value }}</h2>
-      <img v-bind:src="item.img.value" />
-    </article>
+    <div v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
+      <item v-bind:item="item" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import item from "./item.vue";
 
 export default {
   name: "itemList",
+  components: {
+    item
+  },
+  props: {
+    item: null
+  },
   data() {
     return {
       items: []
@@ -31,7 +37,7 @@ export default {
 
         SELECT ?cho ?img ?title ?cat WHERE {
           #Categorie
-          	<https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
+          	<https://hdl.handle.net/20.500.11840/termmaster2816> skos:* ?catURI .
           	?cho edm:isRelatedTo ?catURI .
             ?catURI skos:prefLabel ?cat .
           #Image
@@ -40,7 +46,7 @@ export default {
             ?cho dc:title ?title .
 
           FILTER langMatches(lang(?title), "eng")
-        } LIMIT 10
+        } LIMIT 2
       `;
     axios
       .get(url + "?query=" + encodeURIComponent(query) + "&format=json")
@@ -61,31 +67,12 @@ export default {
 </script>
 
 <style scoped>
-article {
-  background-color: white;
-  border: 1px solid white;
-  margin-bottom: 20px;
-  padding: 10px;
-  width: calc(100% - 20px);
+div:first-of-type {
+  display: flex;
+  flex-direction: column;
 }
 
-article:last-of-type {
-  margin-bottom: 0px;
-}
-/* TODO: de articles zijn niet hetzelfde gepositioneerd aan beide kanten van de timeline */
-.left > div > article {
-  border-radius: 5px 0px 5px 5px;
-  margin: 0px 10px 20px 0px;
-}
-
-.right > div > article {
-  border-radius: 0px 5px 5px 5px;
-  margin: 0px 0px 20px 30px;
-}
-
-img {
-  height: 100px;
-  width: auto;
-  display: block;
+.right > div > div > article {
+  align-self: flex-start;
 }
 </style>

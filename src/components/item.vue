@@ -10,16 +10,13 @@ export default {
   name: "item",
   props: {
     item: null
-  },
-  created() {
-    console.log(items);
   }
 };
 </script>
 
 <style scoped>
 article {
-  background-color: #d6d7d9;
+  background-color: white;
   border: 1px solid white;
   margin-bottom: 20px;
   padding: 10px;
@@ -28,21 +25,17 @@ article {
   cursor: pointer;
 }
 
-article:last-of-type {
-  margin-bottom: 0px;
-}
-.left > div > article {
+.left > div > div > article {
   border-radius: 5px 0px 5px 5px;
-  align-self: flex-end;
 }
 
-.right > div > article {
+.right > div > div > article {
   border-radius: 0px 5px 5px 5px;
-  align-self: flex-start;
 }
 
 article > h2 {
   font-size: 20px;
+  text-align: center;
 }
 
 article > img {
