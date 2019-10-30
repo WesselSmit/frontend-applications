@@ -46,18 +46,24 @@ export default {
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-        SELECT ?cho ?img ?title ?cat WHERE {
-          #Categorie
-          	<https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
+        SELECT ?cho ?img ?title ?cat ?time ?description WHERE {
+          #Category
+            <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
+            # <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
           	?cho edm:isRelatedTo ?catURI .
             ?catURI skos:prefLabel ?cat .
           #Image
             ?cho edm:isShownBy ?img .
           #Title
             ?cho dc:title ?title .
+          #Time
+            ?cho dct:created ?time .
+
+          #Description
+          OPTIONAL { ?cho dct:description ?description . }
 
           FILTER langMatches(lang(?title), "eng")
-        } LIMIT 5
+        } LIMIT 15
       `;
     axios
       .get(url + "?query=" + encodeURIComponent(query) + "&format=json")
@@ -69,7 +75,7 @@ export default {
           item.img.value = item.img.value.replace("http", "https");
           if (item.img.value.includes("-Extra")) {
             item.img.value = item.img.value.replace("-Extra", "");
-            console.log(res);
+            return res;
           }
         });
       })
