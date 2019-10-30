@@ -145,4 +145,16 @@ https://codepen.io/Razpudding/pen/LKMbwZ
 
 Then I rewrote it using the **Axios** library. My final call still uses the URL & Query variables of **Laurens**' example.
 
+**SPARQL Query**
+
+Kim Gerrard showed me how to create **optional** variables in SPARQL.
+```
+OPTIONAL { ?cho dct:spatial ?place } .
+```
+instead of:
+```
+?cho dct:spatial ?place .
+```
+
+
 
