@@ -62,10 +62,22 @@ npm run serve
 localhost:8080
 ```
 
+## Features
+**Interest-Tracking**
+When users click on specific items the targeted item will be saved to the localStorage. All activity will be saved and is displayed in the console (table format). This console-table will show the item's: title, cho (URL to items detail page) & number of times clicked/viewed. This feature is meant to give the client (NMVW) an indication of what items people think are interesting. 
+
 ## Data
 **API**
 
-This application uses the **NMVW database**, which is accessed with **fetch()** calls at the following endpoint:
+This application uses the **NMVW database**, used data: 
+* Category
+* Images
+* Titles
+* Time 
+* Origin
+
+
+The data is accessed with **fetch()** calls at the following endpoint:
 ```
 https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-23/sparql
 ```
