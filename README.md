@@ -92,7 +92,8 @@ SPARQL is used to query, I use the following SPARQL query:
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-        SELECT ?cho ?img ?title ?cat ?time ?origin ?placeAltLabel ?placeAltLabel2 ?placeAltLabel4 ?placeAltLabel6 ?placeAltLabel8 ?placeAltLabel10 WHERE {
+        SELECT ?cho ?img ?title ?cat ?time ?origin ?placeAltLabel ?placeAltLabel2 ?placeAltLabel4 
+        ?placeAltLabel6 ?placeAltLabel8 ?placeAltLabel10 WHERE {
           #Category
           	<https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
           	?cho edm:isRelatedTo ?catURI .
@@ -126,7 +127,8 @@ SPARQL is used to query, I use the following SPARQL query:
             ?placeAltLabel7 skos:broader ?placeAltLabel9 .
             ?placeAltLabel9 skos:prefLabel ?placeAltLabel10 .
 
-          BIND(concat(?placeSpecific," > ",?placeAltLabel," > ",?placeAltLabel2," > ",?placeAltLabel4," > ",?placeAltLabel6," > ",?placeAltLabel8," > ",?placeAltLabel10) AS?origin)
+          BIND(concat(?placeSpecific," > ",?placeAltLabel," > ",?placeAltLabel2," > ",?placeAltLabel4," 
+          > ",?placeAltLabel6," > ",?placeAltLabel8," > ",?placeAltLabel10) AS?origin)
           FILTER langMatches(lang(?title), "eng")
         } LIMIT 15
 ```
