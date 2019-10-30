@@ -34,6 +34,13 @@ Navigate to the repository in the terminal (using the 'cd' and 'ls' commands)
 npm install
 ```
 
+**Install Vue-cli**
+```
+npm install -g @vue/cli
+
+```
+
+
 **Install Axios**
 ```
 npm install axios
