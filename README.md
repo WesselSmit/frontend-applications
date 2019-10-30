@@ -156,5 +156,6 @@ instead of:
 ?cho dct:spatial ?place .
 ```
 
+**Concept**
 
-
+My Vue group helped me with my concept through feedback and brainstoming.
