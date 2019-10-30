@@ -19,6 +19,8 @@
 </template>
 
 <script>
+/*eslint 'no-console':0*/
+
 import axios from "axios";
 import item from "./item.vue";
 
@@ -67,6 +69,7 @@ export default {
           item.img.value = item.img.value.replace("http", "https");
           if (item.img.value.includes("-Extra")) {
             item.img.value = item.img.value.replace("-Extra", "");
+            console.log(res);
           }
         });
       })
