@@ -1,6 +1,6 @@
 <template>
   <article @click="details">
-    <!-- <img v-bind:src="item.img.value" /> -->
+    <img v-bind:src="item.img.value" />
     <h2>{{ item.title.value }}</h2>
   </article>
 </template>
@@ -31,7 +31,6 @@ export default {
         console.table(JSON.parse(localStorage.getItem("metadata")));
       } else {
         Arr = JSON.parse(localStorage.getItem("metadata"));
-
         Arr.forEach(function(el, index) {
           if (el.cho == thisItem.cho.value) {
             el.clicked++;
@@ -45,7 +44,6 @@ export default {
         });
 
         if (newItem && !isUpdated) {
-          //console.log("ja");
           Arr.push(itemObj);
           localStorage.setItem("metadata", JSON.stringify(Arr));
           console.table(JSON.parse(localStorage.getItem("metadata")));
