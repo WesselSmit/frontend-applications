@@ -67,6 +67,10 @@ When users click on specific items the targeted item will be saved to the localS
 
 Looking at a image that wouldn't load; I noticed the URL for almost every image is the same except for images that wouldn't load. Images that wouldn't load have "-Extra" added to their URLs. When you remove the "-Extra" from the URL you get an 'image not available' image. Since I'd rather display an "image not available" than a blank image I've added a function in my fetch call that evaluates the image.src. If the src contains "-Extra" it'll remove it from the src, and thus serves a fallback image.
 
+**Item Comparing**
+
+ When an item is clicked the object expands and shows additional information (details), the user can see the details of two items at the same time (one for each comparison object). This way the user can do a side-by-side comparison of items.
+
 ## Data
 **API**
 
@@ -90,52 +94,43 @@ https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-23/sp
 SPARQL is used to query, I use the following SPARQL query:
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX dc: <http://purl.org/dc/elements/1.1/>
+        PREFIX dct: <http://purl.org/dc/terms/>
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?cho ?img ?title ?cat ?time ?origin ?placeAltLabel ?placeAltLabel2 ?placeAltLabel4 
-?placeAltLabel6 ?placeAltLabel8 ?placeAltLabel10 WHERE {
-  #Category
-  	<https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
-  	?cho edm:isRelatedTo ?catURI .
-   ?catURI skos:prefLabel ?cat .
-  #Image
-    ?cho edm:isShownBy ?img .
-  #Title
-    ?cho dc:title ?title .
-  #Time
-    ?cho dct:created ?time .
+        SELECT ?cho ?img ?title ?cat ?time ?type ?culture ?placeSpecific ?placeAltLabel ?placeAltLabel2 WHERE {
+          #Category
+            # <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
+             <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
+          	?cho edm:isRelatedTo ?catURI .
+            ?catURI skos:prefLabel ?cat .
+          #Image
+            ?cho edm:isShownBy ?img .
+          #Title
+            ?cho dc:title ?title .
+          #Time
+            ?cho dct:created ?time .
+          #Type
+            ?cho dc:type ?type .
+          #Culture
+            ?cho dc:subject ?cultureRaw .
+            ?cultureRaw skos:prefLabel ?culture .
 
-  #Origin
-    ?cho dct:spatial ?place . #Place  
-    ?place skos:prefLabel ?placeSpecific . 
+          #Origin
+            ?cho dct:spatial ?place .
+            ?place skos:prefLabel ?placeSpecific . 
+            
+            OPTIONAL { ?place skos:broader ?placeAlt } . 
+            OPTIONAL { ?placeAlt skos:prefLabel ?placeAltLabel } .
 
-    ?place skos:broader ?placeAlt . 
-    ?placeAlt skos:prefLabel ?placeAltLabel .
+            OPTIONAL { ?placeAlt skos:broader ?placeAltLabel1 } .
+            OPTIONAL { ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 } .
 
-    ?placeAlt skos:broader ?placeAltLabel1 .
-    ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 .
-
-    ?placeAltLabel1 skos:broader ?placeAltLabel3 .
-    ?placeAltLabel3 skos:prefLabel ?placeAltLabel4 .
-
-    ?placeAltLabel3 skos:broader ?placeAltLabel5 .
-    ?placeAltLabel5 skos:prefLabel ?placeAltLabel6 .
-
-    ?placeAltLabel5 skos:broader ?placeAltLabel7 .
-    ?placeAltLabel7 skos:prefLabel ?placeAltLabel8 .
-
-    ?placeAltLabel7 skos:broader ?placeAltLabel9 .
-    ?placeAltLabel9 skos:prefLabel ?placeAltLabel10 .
-
-  BIND(concat(?placeSpecific," > ",?placeAltLabel," > ",?placeAltLabel2," > ",?placeAltLabel4," 
-  > ",?placeAltLabel6," > ",?placeAltLabel8," > ",?placeAltLabel10) AS?origin)
-  FILTER langMatches(lang(?title), "eng")
-} LIMIT 15
+        FILTER langMatches(lang(?title), "eng")
+        } LIMIT 40
 ```
 
 This SPARQL query returns items with: URI, img, tite, time, category, origin (all locations)
@@ -163,4 +158,14 @@ instead of:
 
 **Concept**
 
-My Vue group helped me with my concept through feedback and brainstoming.
+My Vue group helped me with my concept through **feedback and brainstoming**.
+
+**Class toggle with vue syntax**
+
+Wiebe helped me write a function that dynamically toggles a class in the DOM. I was trying to do it in vanilla JS and was on the right path but didn't really understand how to write it using Vue's syntax. Wiebe helped rewrite the function to be compatible with the **vue syntax**.
+
+**Deployment**
+
+I tried to deploy my website using **Netlify**, this hoewever didn't quite work. I didn't realise I had to run **'npm run build'** in the terminal. So when Joanne explained this to me it immediately worked.
+
+
