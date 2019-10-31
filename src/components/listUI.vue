@@ -6,12 +6,24 @@
       <h2>North-America</h2>
     </div>
     <section class="left">
-      <div v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
+      <div
+        v-for="(item, index) in items"
+        v-bind:key="item.id"
+        v-bind:id="'item' + index"
+        v-bind:class="{active:item.img.value == selected}"
+        v-on:click="selected = item.img.value"
+      >
         <item v-bind:item="item" />
       </div>
     </section>
     <section class="right">
-      <div v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
+      <div
+        v-for="(item, index) in items"
+        v-bind:key="item.id"
+        v-bind:id="'item' + index"
+        v-bind:class="{active:item.img.value == selected}"
+        v-on:click="selected = item.img.value"
+      >
         <item v-bind:item="item" />
       </div>
     </section>
@@ -31,7 +43,8 @@ export default {
   },
   data() {
     return {
-      items: []
+      items: [],
+      selected: undefined
     };
   },
   created() {
@@ -145,6 +158,7 @@ section.right {
 section > div {
   display: flex;
   flex-direction: column;
+  transition: ease opacity 0.5s;
 }
 
 .left > div > * {

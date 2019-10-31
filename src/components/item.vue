@@ -1,7 +1,7 @@
 <template>
   <article @click="details">
     <img v-bind:alt="item.title.value" v-bind:src="item.img.value" />
-    <div>
+    <div class="hide">
       <h2>{{item.title.value}}</h2>
       <p class="type">Type: {{item.type.value}}</p>
       <p class="culture">{{item.culture.value}}</p>
@@ -57,6 +57,9 @@ export default {
           console.table(JSON.parse(localStorage.getItem("metadata")));
         }
       }
+      console.log(this);
+      console.log(event.target);
+      // event.target.classList.toggle("hide");
     }
   }
 };
@@ -72,6 +75,10 @@ article {
   display: inline-block;
   cursor: pointer;
   display: grid;
+}
+
+article.selected {
+  opacity: 0;
 }
 
 .left > div > article {
@@ -97,14 +104,23 @@ article > img {
 article > div > h2 {
   font-size: 20px;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin: 5px 0px;
 }
 
 article > div > a {
   text-decoration: none;
   color: rgb(94, 94, 240);
 }
-/* TODO: MAAK EEN GRID IN DE DIV (DIE IN DE ARTCILE ZIT, STYLE DE CONTENT (P/A TAGS) HIERVAN) */
+
+div > article > div {
+  position: absolute;
+  left: -9999px;
+}
+
+div.active > article > div {
+  position: relative;
+  left: 0px;
+}
 </style>
 
 
