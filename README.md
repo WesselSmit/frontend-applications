@@ -67,6 +67,10 @@ When users click on specific items the targeted item will be saved to the localS
 
 Looking at a image that wouldn't load; I noticed the URL for almost every image is the same except for images that wouldn't load. Images that wouldn't load have "-Extra" added to their URLs. When you remove the "-Extra" from the URL you get an 'image not available' image. Since I'd rather display an "image not available" than a blank image I've added a function in my fetch call that evaluates the image.src. If the src contains "-Extra" it'll remove it from the src, and thus serves a fallback image.
 
+**Item Comparing**
+
+ When an item is clicked the object expands and shows additional information (details), the user can see the details of two items at the same time (one for each comparison object). This way the user can do a side-by-side comparison of items.
+
 ## Data
 **API**
 
