@@ -60,7 +60,12 @@ localhost:8080
 
 ## Features
 **Interest-Tracking**
+
 When users click on specific items the targeted item will be saved to the localStorage. All activity will be saved and is displayed in the console (table format). This console-table will show the item's: title, cho (URL to items detail page) & number of times clicked/viewed. This feature is meant to give the client (NMVW) an indication of what items people think are interesting. 
+
+**Image Error Fallback**
+
+Looking at a image that wouldn't load; I noticed the URL for almost every image is the same except for images that wouldn't load. Images that wouldn't load have "-Extra" added to their URLs. When you remove the "-Extra" from the URL you get an 'image not available' image. Since I'd rather display an "image not available" than a blank image I've added a function in my fetch call that evaluates the image.src. If the src contains "-Extra" it'll remove it from the src, and thus serves a fallback image.
 
 ## Data
 **API**
@@ -145,4 +150,17 @@ https://codepen.io/Razpudding/pen/LKMbwZ
 
 Then I rewrote it using the **Axios** library. My final call still uses the URL & Query variables of **Laurens**' example.
 
+**SPARQL Query**
 
+Kim Gerrard showed me how to create **optional** variables in SPARQL.
+```
+OPTIONAL { ?cho dct:spatial ?place } .
+```
+instead of:
+```
+?cho dct:spatial ?place .
+```
+
+**Concept**
+
+My Vue group helped me with my concept through feedback and brainstoming.
