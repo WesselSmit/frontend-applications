@@ -31,8 +31,7 @@ export default {
   },
   data() {
     return {
-      items: [],
-      listLimitation: 20
+      items: []
     };
   },
   created() {
@@ -75,7 +74,7 @@ export default {
             OPTIONAL { ?placeAlt skos:broader ?placeAltLabel1 } .
             OPTIONAL { ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 } .
 
-          FILTER langMatches(lang(?title), "eng")
+        FILTER langMatches(lang(?title), "eng")
         } LIMIT 40
       `;
     axios
@@ -87,8 +86,8 @@ export default {
           item.img.value = item.img.value.replace("http", "https");
           if (item.img.value.includes("-Extra")) {
             item.img.value = item.img.value.replace("-Extra", "");
-            return res;
           }
+          return res;
         });
       })
       .catch(err => console.log(err));

@@ -1,7 +1,15 @@
 <template>
   <article @click="details">
-    <img v-bind:src="item.img.value" />
-    <!-- <h2>{{ item.title.value }}</h2> -->
+    <img v-bind:alt="item.title.value" v-bind:src="item.img.value" />
+    <div>
+      <h2>{{item.title.value}}</h2>
+      <p class="type">Type: {{item.type.value}}</p>
+      <p class="culture">{{item.culture.value}}</p>
+      <p class="time">{{item.time.value}}</p>
+      <p class="placeSpecfic">{{item.placeSpecific.value}}</p>
+      <p place="cat">{{item.cat.value}}</p>
+      <a target="_blank" v-bind:href="item.cho.value">Source</a>
+    </div>
   </article>
 </template>
 
@@ -63,7 +71,7 @@ article {
   width: auto;
   display: inline-block;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.16) 1px 8px 8px;
+  display: grid;
 }
 
 .left > div > article {
@@ -74,13 +82,8 @@ article {
   border-radius: 0px 5px 5px 5px;
 }
 
-article > h2 {
-  font-size: 20px;
-  color: #d6d7d9;
-  font-weight: 400;
-  background-color: #474c56;
-  text-align: center;
-  padding-top: 3px;
+article > div > * {
+  margin: 0px;
 }
 
 article > img {
@@ -90,4 +93,19 @@ article > img {
   display: block;
   margin: auto;
 }
+
+article > div > h2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+article > div > a {
+  text-decoration: none;
+  color: rgb(94, 94, 240);
+}
+/* TODO: MAAK EEN GRID IN DE DIV (DIE IN DE ARTCILE ZIT, STYLE DE CONTENT (P/A TAGS) HIERVAN) */
 </style>
+
+
+
