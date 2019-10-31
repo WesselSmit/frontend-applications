@@ -163,4 +163,14 @@ instead of:
 
 **Concept**
 
-My Vue group helped me with my concept through feedback and brainstoming.
+My Vue group helped me with my concept through **feedback and brainstoming**.
+
+**Class toggle with vue syntax**
+
+Wiebe helped me write a function that dynamically toggles a class in the DOM. I was trying to do it in vanilla JS and was on the right path but didn't really understand how to write it using Vue's syntax. Wiebe helped rewrite the function to be compatible with the **vue syntax**.
+
+**Deployment**
+
+I tried to deploy my website using **Netlify**, this hoewever didn't quite work. I didn't realise I had to run **'npm run build'** in the terminal. So when Joanne explained this to me it immediately worked.
+
+
