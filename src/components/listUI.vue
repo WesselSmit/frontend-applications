@@ -1,9 +1,9 @@
 <template>
   <main>
     <div>
-      <h2>North-America</h2>
+      <h2>Africa</h2>
       <h1>NMVW Comparison</h1>
-      <h2>South-America</h2>
+      <h2>North-America</h2>
     </div>
     <section class="left">
       <div v-for="(item, index) in items" v-bind:key="item.id" v-bind:id="'item' + index">
@@ -31,7 +31,8 @@ export default {
   },
   data() {
     return {
-      items: []
+      items: [],
+      listLimitation: 20
     };
   },
   created() {
@@ -46,10 +47,10 @@ export default {
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-        SELECT ?cho ?img ?title ?cat ?time ?description WHERE {
+        SELECT ?cho ?img ?title ?cat ?time ?type ?culture ?placeSpecific ?placeAltLabel ?placeAltLabel2 WHERE {
           #Category
-            <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
-            # <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
+            # <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
+             <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
           	?cho edm:isRelatedTo ?catURI .
             ?catURI skos:prefLabel ?cat .
           #Image
@@ -58,19 +59,30 @@ export default {
             ?cho dc:title ?title .
           #Time
             ?cho dct:created ?time .
+          #Type
+            ?cho dc:type ?type .
+          #Culture
+            ?cho dc:subject ?cultureRaw .
+            ?cultureRaw skos:prefLabel ?culture .
 
-          #Description
-          OPTIONAL { ?cho dct:description ?description . }
+          #Origin
+            ?cho dct:spatial ?place .
+            ?place skos:prefLabel ?placeSpecific . 
+            
+            OPTIONAL { ?place skos:broader ?placeAlt } . 
+            OPTIONAL { ?placeAlt skos:prefLabel ?placeAltLabel } .
+
+            OPTIONAL { ?placeAlt skos:broader ?placeAltLabel1 } .
+            OPTIONAL { ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 } .
 
           FILTER langMatches(lang(?title), "eng")
-        } LIMIT 15
+        } LIMIT 40
       `;
     axios
       .get(url + "?query=" + encodeURIComponent(query) + "&format=json")
       .then(res => (this.items = res.data.results.bindings))
       .then(res => console.log(res))
       .then(res => {
-        //Unavailable images have '-Extra' in their URL, so we renavigate the src to the unavailable image (URL without the '-Extra')
         this.items.forEach(function(item) {
           item.img.value = item.img.value.replace("http", "https");
           if (item.img.value.includes("-Extra")) {
@@ -104,6 +116,7 @@ main > div:first-of-type > * {
 }
 
 main > div:first-of-type h1 {
+  margin-bottom: -2px;
   font-size: 20px;
 }
 
@@ -135,21 +148,22 @@ section > div {
   flex-direction: column;
 }
 
-section > div > article {
-  background-color: #474c56;
-  border: 1px solid #474c56;
-  margin-bottom: 20px;
-  padding: 10px;
-  width: auto;
-  display: inline-block;
-  cursor: pointer;
-}
-
 .left > div > * {
   align-self: flex-end;
 }
 
 .right > div > * {
   align-self: flex-start;
+}
+
+/*Make sure both lists show different items (ideally you'd make two different fetch calls) */
+.left > div:nth-child(n + 21) {
+  position: absolute;
+  left: -9999px;
+}
+
+.right > div:nth-child(-n + 20) {
+  position: absolute;
+  left: -9999px;
 }
 </style>

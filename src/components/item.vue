@@ -1,7 +1,7 @@
 <template>
   <article @click="details">
     <img v-bind:src="item.img.value" />
-    <h2>{{ item.title.value }}</h2>
+    <!-- <h2>{{ item.title.value }}</h2> -->
   </article>
 </template>
 
@@ -56,10 +56,10 @@ export default {
 
 <style scoped>
 article {
-  background-color: #474c56;
-  border: 1px solid #474c56;
-  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid white;
   padding: 10px;
+  margin-bottom: 20px;
   width: auto;
   display: inline-block;
   cursor: pointer;
@@ -84,7 +84,7 @@ article > h2 {
 }
 
 article > img {
-  max-height: 200px;
+  max-height: 400px;
   width: auto;
   max-width: 40vw;
   display: block;
