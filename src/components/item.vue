@@ -3,19 +3,30 @@
     <img v-bind:alt="item.title.value" v-bind:src="item.img.value" />
     <div class="hide">
       <h2>{{item.title.value}}</h2>
-      <p class="type">Type: {{item.type.value}}</p>
-      <p class="culture">{{item.culture.value}}</p>
-      <p class="time">{{item.time.value}}</p>
-      <p class="placeSpecfic">{{item.placeSpecific.value}}</p>
-      <p place="cat">{{item.cat.value}}</p>
-      <a target="_blank" v-bind:href="item.cho.value">Source</a>
+      <p class="type">
+        <span>Wapensoort:</span>
+        {{item.type.value}}
+      </p>
+      <p class="time">
+        <span>Datering:</span>
+        {{item.time.value}}
+      </p>
+      <p class="placeSpecfic">
+        <span>Herkomst:</span>
+        {{item.placeSpecific.value}} - {{item.placeAltLabel2.value}}
+      </p>
+      <p class="culture">
+        <span>Cultuur:</span>
+        {{item.culture.value}}
+      </p>
+      <!-- <p place="cat">{{item.cat.value}}</p> -->
+      <a class="source" target="_blank" v-bind:href="item.cho.value">Source</a>
     </div>
   </article>
 </template>
 
 <script>
 /*eslint 'no-console':0*/
-
 export default {
   name: "item",
   props: {
@@ -57,9 +68,6 @@ export default {
           console.table(JSON.parse(localStorage.getItem("metadata")));
         }
       }
-      console.log(this);
-      console.log(event.target);
-      // event.target.classList.toggle("hide");
     }
   }
 };
@@ -77,8 +85,12 @@ article {
   display: grid;
 }
 
-article.selected {
-  opacity: 0;
+.left > div > article:hover {
+  margin-right: 10px;
+}
+
+.right > div > article:hover {
+  margin-left: 10px;
 }
 
 .left > div > article {
@@ -102,26 +114,54 @@ article > img {
 }
 
 article > div > h2 {
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: bold;
   margin: 5px 0px;
 }
 
-article > div > a {
+article > div > p {
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+span {
+  font-weight: bold;
+}
+
+.type:first-letter {
+  text-transform: uppercase;
+}
+
+.source {
   text-decoration: none;
   color: rgb(94, 94, 240);
+  position: relative;
+  left: calc(100% - 50px);
+}
+
+.source:hover {
+  color: rgb(39, 39, 145);
 }
 
 div > article > div {
   position: absolute;
   left: -9999px;
+  transition: ease opacity 0.5s;
 }
 
-div.active > article > div {
+div.active > article > div,
+div.activeAlt > article > div {
   position: relative;
   left: 0px;
+  transition: ease opacity 0.5s;
+}
+
+div.active > article {
+  margin-right: 20px;
+}
+
+div.activeAlt > article {
+  margin-left: 20px;
 }
 </style>
-
-
 

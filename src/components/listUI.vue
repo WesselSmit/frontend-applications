@@ -21,8 +21,8 @@
         v-for="(item, index) in items"
         v-bind:key="item.id"
         v-bind:id="'item' + index"
-        v-bind:class="{active:item.img.value == selected}"
-        v-on:click="selected = item.img.value"
+        v-bind:class="{activeAlt:item.img.value == selectedAlt}"
+        v-on:click="selectedAlt = item.img.value"
       >
         <item v-bind:item="item" />
       </div>
@@ -44,7 +44,8 @@ export default {
   data() {
     return {
       items: [],
-      selected: undefined
+      selected: undefined,
+      selectedAlt: undefined
     };
   },
   created() {
@@ -97,6 +98,7 @@ export default {
       .then(res => {
         this.items.forEach(function(item) {
           item.img.value = item.img.value.replace("http", "https");
+          //set fallback image
           if (item.img.value.includes("-Extra")) {
             item.img.value = item.img.value.replace("-Extra", "");
           }
@@ -158,7 +160,6 @@ section.right {
 section > div {
   display: flex;
   flex-direction: column;
-  transition: ease opacity 0.5s;
 }
 
 .left > div > * {
