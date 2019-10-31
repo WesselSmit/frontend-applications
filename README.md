@@ -80,6 +80,9 @@ This application uses the **NMVW database**, used data:
 * Titles
 * Time 
 * Origin
+* Type
+* Culture
+* CHO
 
 The data isn't reformatted and will be used in the same context as it's used now at the [NMVW-collectie](https://collectie.wereldculturen.nl/#/query/b825de9d-3dd8-4f45-9f7e-df6b2634fac3).
 
