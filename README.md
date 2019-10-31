@@ -97,43 +97,43 @@ https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-23/sp
 SPARQL is used to query, I use the following SPARQL query:
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX dc: <http://purl.org/dc/elements/1.1/>
-        PREFIX dct: <http://purl.org/dc/terms/>
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-        SELECT ?cho ?img ?title ?cat ?time ?type ?culture ?placeSpecific ?placeAltLabel ?placeAltLabel2 WHERE {
-          #Category
-            # <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
-             <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
-          	?cho edm:isRelatedTo ?catURI .
-            ?catURI skos:prefLabel ?cat .
-          #Image
-            ?cho edm:isShownBy ?img .
-          #Title
-            ?cho dc:title ?title .
-          #Time
-            ?cho dct:created ?time .
-          #Type
-            ?cho dc:type ?type .
-          #Culture
-            ?cho dc:subject ?cultureRaw .
-            ?cultureRaw skos:prefLabel ?culture .
+SELECT ?cho ?img ?title ?cat ?time ?type ?culture ?placeSpecific ?placeAltLabel ?placeAltLabel2 WHERE {
+  #Category
+    # <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
+     <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
+  	?cho edm:isRelatedTo ?catURI .
+    ?catURI skos:prefLabel ?cat .
+  #Image
+    ?cho edm:isShownBy ?img .
+  #Title
+    ?cho dc:title ?title .
+  #Time
+    ?cho dct:created ?time .
+  #Type
+    ?cho dc:type ?type .
+  #Culture
+    ?cho dc:subject ?cultureRaw .
+    ?cultureRaw skos:prefLabel ?culture .
 
-          #Origin
-            ?cho dct:spatial ?place .
-            ?place skos:prefLabel ?placeSpecific . 
-            
-            OPTIONAL { ?place skos:broader ?placeAlt } . 
-            OPTIONAL { ?placeAlt skos:prefLabel ?placeAltLabel } .
+  #Origin
+    ?cho dct:spatial ?place .
+    ?place skos:prefLabel ?placeSpecific . 
+    
+    OPTIONAL { ?place skos:broader ?placeAlt } . 
+    OPTIONAL { ?placeAlt skos:prefLabel ?placeAltLabel } .
 
-            OPTIONAL { ?placeAlt skos:broader ?placeAltLabel1 } .
-            OPTIONAL { ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 } .
+    OPTIONAL { ?placeAlt skos:broader ?placeAltLabel1 } .
+    OPTIONAL { ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 } .
 
-        FILTER langMatches(lang(?title), "eng")
-        } LIMIT 40
+FILTER langMatches(lang(?title), "eng")
+} LIMIT 40
 ```
 
 This SPARQL query returns items with: URI, img, tite, time, category, origin (all locations)
