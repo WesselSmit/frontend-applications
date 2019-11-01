@@ -69,7 +69,7 @@ Looking at a image that wouldn't load; I noticed the URL for almost every image 
 
 **Item Comparing**
 
- When an item is clicked the object expands and shows additional information (details), the user can see the details of two items at the same time (one for each comparison object). This way the user can do a side-by-side comparison of items.
+When an item is clicked the object expands and shows additional information (details), the user can see the details of two items at the same time (one for each comparison object). This way the user can do a side-by-side comparison of items. When the users clicks an item a function is called that toggles a class on said item. In CSS the details are hidden but this class enables the details to be shown. Both 'itemLists' toggle different classes to allow one item from each itemList to be shown at the same time.
 
 ## Data
 **API**
