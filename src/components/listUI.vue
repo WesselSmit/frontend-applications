@@ -44,6 +44,7 @@ export default {
   data() {
     return {
       items: [],
+      // give items a class, this toggles automatically when another item is clicked (selected & selectedAlt; one for each component)
       selected: undefined,
       selectedAlt: undefined
     };
@@ -97,6 +98,7 @@ export default {
       .then(res => console.log(res))
       .then(res => {
         this.items.forEach(function(item) {
+          //replace original src to htttps instead of http, otherwise images won't show
           item.img.value = item.img.value.replace("http", "https");
           //set fallback image
           if (item.img.value.includes("-Extra")) {

@@ -35,6 +35,7 @@ export default {
   methods: {
     details: function() {
       let thisItem = this.item,
+        // create an object for the viewed items
         itemObj = {
           title: thisItem.title.value,
           cho: thisItem.cho.value,
@@ -45,29 +46,32 @@ export default {
         isUpdated = false;
 
       if (localStorage.getItem("metadata") == null) {
+        // if there are no items in the localStorage we create push the first object
         localStorage.setItem("metadata", JSON.stringify(Arr));
         Arr = JSON.parse(localStorage.getItem("metadata"));
-        console.table(JSON.parse(localStorage.getItem("metadata")));
       } else {
+        //if the localStorage already has an array we store we check if this particular item is stored in the localStorage
         Arr = JSON.parse(localStorage.getItem("metadata"));
         Arr.forEach(function(el, index) {
           if (el.cho == thisItem.cho.value) {
+            //if this item is already in the localStorage array we only update the clicked propery
             el.clicked++;
             Arr[index] = el;
             localStorage.setItem("metadata", JSON.stringify(Arr));
-            console.table(JSON.parse(localStorage.getItem("metadata")));
             isUpdated = true;
           } else {
+            //if it's not in the localStorage array we set the newItem var to true
             newItem = true;
           }
         });
 
         if (newItem && !isUpdated) {
+          //if the newItem var is true the item will be pushed into the localStorage array
           Arr.push(itemObj);
           localStorage.setItem("metadata", JSON.stringify(Arr));
-          console.table(JSON.parse(localStorage.getItem("metadata")));
         }
       }
+      console.table(JSON.parse(localStorage.getItem("metadata")));
     }
   }
 };
