@@ -69,7 +69,7 @@ Looking at a image that wouldn't load; I noticed the URL for almost every image 
 
 **Item Comparing**
 
- When an item is clicked the object expands and shows additional information (details), the user can see the details of two items at the same time (one for each comparison object). This way the user can do a side-by-side comparison of items.
+When an item is clicked the object expands and shows additional information (details), the user can see the details of two items at the same time (one for each comparison object). This way the user can do a side-by-side comparison of items. When the users clicks an item a function is called that toggles a class on said item. In CSS the details are hidden but this class enables the details to be shown. Both 'itemLists' toggle different classes to allow one item from each itemList to be shown at the same time.
 
 ## Data
 **API**
@@ -80,6 +80,9 @@ This application uses the **NMVW database**, used data:
 * Titles
 * Time 
 * Origin
+* Type
+* Culture
+* CHO
 
 The data isn't reformatted and will be used in the same context as it's used now at the [NMVW-collectie](https://collectie.wereldculturen.nl/#/query/b825de9d-3dd8-4f45-9f7e-df6b2634fac3).
 
@@ -94,43 +97,43 @@ https://api.data.netwerkdigitaalerfgoed.nl/datasets/ivo/NMVW/services/NMVW-23/sp
 SPARQL is used to query, I use the following SPARQL query:
 ```
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX dc: <http://purl.org/dc/elements/1.1/>
-        PREFIX dct: <http://purl.org/dc/terms/>
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX edm: <http://www.europeana.eu/schemas/edm/>
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX edm: <http://www.europeana.eu/schemas/edm/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-        SELECT ?cho ?img ?title ?cat ?time ?type ?culture ?placeSpecific ?placeAltLabel ?placeAltLabel2 WHERE {
-          #Category
-            # <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
-             <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
-          	?cho edm:isRelatedTo ?catURI .
-            ?catURI skos:prefLabel ?cat .
-          #Image
-            ?cho edm:isShownBy ?img .
-          #Title
-            ?cho dc:title ?title .
-          #Time
-            ?cho dct:created ?time .
-          #Type
-            ?cho dc:type ?type .
-          #Culture
-            ?cho dc:subject ?cultureRaw .
-            ?cultureRaw skos:prefLabel ?culture .
+SELECT ?cho ?img ?title ?cat ?time ?type ?culture ?placeSpecific ?placeAltLabel ?placeAltLabel2 WHERE {
+  #Category
+    # <https://hdl.handle.net/20.500.11840/termmaster2653> skos:* ?catURI .
+     <https://hdl.handle.net/20.500.11840/termmaster2815> skos:* ?catURI .
+  	?cho edm:isRelatedTo ?catURI .
+    ?catURI skos:prefLabel ?cat .
+  #Image
+    ?cho edm:isShownBy ?img .
+  #Title
+    ?cho dc:title ?title .
+  #Time
+    ?cho dct:created ?time .
+  #Type
+    ?cho dc:type ?type .
+  #Culture
+    ?cho dc:subject ?cultureRaw .
+    ?cultureRaw skos:prefLabel ?culture .
 
-          #Origin
-            ?cho dct:spatial ?place .
-            ?place skos:prefLabel ?placeSpecific . 
-            
-            OPTIONAL { ?place skos:broader ?placeAlt } . 
-            OPTIONAL { ?placeAlt skos:prefLabel ?placeAltLabel } .
+  #Origin
+    ?cho dct:spatial ?place .
+    ?place skos:prefLabel ?placeSpecific . 
+    
+    OPTIONAL { ?place skos:broader ?placeAlt } . 
+    OPTIONAL { ?placeAlt skos:prefLabel ?placeAltLabel } .
 
-            OPTIONAL { ?placeAlt skos:broader ?placeAltLabel1 } .
-            OPTIONAL { ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 } .
+    OPTIONAL { ?placeAlt skos:broader ?placeAltLabel1 } .
+    OPTIONAL { ?placeAltLabel1 skos:prefLabel ?placeAltLabel2 } .
 
-        FILTER langMatches(lang(?title), "eng")
-        } LIMIT 40
+FILTER langMatches(lang(?title), "eng")
+} LIMIT 40
 ```
 
 This SPARQL query returns items with: URI, img, tite, time, category, origin (all locations)
